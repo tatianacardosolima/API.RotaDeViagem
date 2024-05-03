@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RotaDeViagem.Domain.Entities;
+using AutoMapper;
+using RotaDeViagem.Domain.Commands.Request;
 
 namespace RotaDeViagem.UnitTests.Fixture
 {
@@ -12,6 +14,14 @@ namespace RotaDeViagem.UnitTests.Fixture
     {
         public RotaFixture() { }
 
+        public IMapper GetMapper()
+        {
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Rota, AddNewRotaRequest>().ReverseMap();
+            });
+            return mockMapper.CreateMapper();
+        }
         public Rota CriarRota()
         {
             Faker faker = new Faker();

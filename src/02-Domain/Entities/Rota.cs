@@ -52,8 +52,9 @@ namespace RotaDeViagem.Domain.Entities
 
                 RuleFor(x => new { x.Origem, x.Destino}).Custom((value, context) => 
                 { 
-                    if (value.Origem.ToLower() == value.Destino.ToLower() )
-                        context.AddFailure("A origem e o Destino devem ser diferentes");
+                    if (value.Origem!= null && value.Destino != null 
+                            && value.Origem.ToLower() == value.Destino.ToLower() )
+                        context.AddFailure("A origem e o Destino devem ser diferentes.");
                 });
 
                 RuleFor(x => x.Valor)
