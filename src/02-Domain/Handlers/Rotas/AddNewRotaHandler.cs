@@ -22,7 +22,7 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
             _mapper = mapper;
         }
         public async Task<IGenericResponse> Handle(AddNewRotaRequest request, CancellationToken cancellationToken)
-        {
+        {            
             DomainException.ThrowWhen(await ExistRotaAsync(request), "Rota já cadastrada");
 
             var entity = _mapper.Map<Rota>(request);

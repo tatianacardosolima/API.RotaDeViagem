@@ -1,10 +1,12 @@
 using AutoMapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using RotaDeViagem.API.Filters;
 using RotaDeViagem.API.Setup;
 using RotaDeViagem.DatabaseRepository.Context;
 using RotaDeViagem.Domain.Commands.Request;
 using RotaDeViagem.Domain.Entities;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,10 @@ builder.Services.AddScoped(serviceProvider =>
     return context;
 });
 
+
+var connectionString = builder.Configuration.GetConnectionString("ConnectionStrings");
+builder.Services.AddScoped<IDbConnection, SqlConnection>((connection) => new SqlConnection(connectionString));
+
 var autoMapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.CreateMap<Rota, AddNewRotaRequest>().ReverseMap();  
@@ -39,6 +45,7 @@ builder.Services.AddMediatR(cfg => {
 });
 
 builder.Services.AddDependencyRepository();
+builder.Services.AddDependencyProvider();
 builder.Services.AddDependencyHandler();
 
 
