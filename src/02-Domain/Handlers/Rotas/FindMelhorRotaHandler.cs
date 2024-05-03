@@ -34,7 +34,7 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
             NotFoundException.ThrowWhenNullOrEmptyList(rotasMaisBarata,"Não há rotas para esse destino.");
 
             var rotaEscolhida = rotasMaisBarata.OrderBy(x => x.ValorTotal).FirstOrDefault();
-            return new GenericResponse(true, $"{rotaEscolhida.Rota} ao custo de ${rotaEscolhida.ValorTotal}", 
+            return new GenericResponse(true, $"**{rotaEscolhida.Rota} ao custo de ${rotaEscolhida.ValorTotal}**", 
                 rotasMaisBarata.OrderBy(x=> x.ValorTotal));
         }
 
