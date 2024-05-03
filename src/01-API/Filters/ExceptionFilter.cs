@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using RotaDeViagem.Shared.Extensions;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using RotaDeViagem.Domain.Commands.Response;
+using RotaDeViagem.Shared.Exceptions;
 
 namespace RotaDeViagem.API.Filters
 {

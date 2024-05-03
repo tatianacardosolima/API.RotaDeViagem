@@ -1,14 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using RotaDeViagem.Domain.Commands.Request;
 using RotaDeViagem.Domain.Commands.Response;
-using RotaDeViagem.Domain.Entities;
 using RotaDeViagem.Domain.Interface.IProviders;
-using RotaDeViagem.Domain.Interface.IRepositories;
-using RotaDeViagem.Shared.Extensions;
-using RotaDeViagem.Shared.Interfaces.IRepositories;
+using RotaDeViagem.Shared.Exceptions;
 using RotaDeViagem.Shared.Interfaces.IResponse;
-using System.Collections.Generic;
 
 namespace RotaDeViagem.Domain.Handlers.Corretores
 {
@@ -26,7 +21,7 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
         {
             DomainException.ThrowWhen(request.Origem == request.Destino, "A rota destino deve ser diferente da rota origem.");
 
-            NotFoundException.ThrowWhenNullEntity(!(await _provider.ExistRotaOrigemAsync(request.Origem)), "Não há rotas para essa origem"); ;
+            NotFoundException.ThrowWhen(!(await _provider.ExistRotaOrigemAsync(request.Origem)), "Não há rotas para essa origem."); ;
             
             List<RotaMaisBarataResponse> rotasMaisBarata = new List<RotaMaisBarataResponse>();
             double valorTotalRota = 0;
@@ -35,6 +30,8 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
 
             await FindMelhorRotaAsync(request.Origem, request.Destino, valorTotalRota, rotaCompleta,
                     rotasMaisBarata);
+
+            NotFoundException.ThrowWhenNullOrEmptyList(rotasMaisBarata,"Não há rotas para esse destino.");
 
             var rotaEscolhida = rotasMaisBarata.OrderBy(x => x.ValorTotal).FirstOrDefault();
             return new GenericResponse(true, $"{rotaEscolhida.Rota} ao custo de ${rotaEscolhida.ValorTotal}", 

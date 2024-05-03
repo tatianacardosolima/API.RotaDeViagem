@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RotaDeViagem.Shared.Interfaces.IResponse
+﻿namespace RotaDeViagem.Shared.Interfaces.IResponse
 {
     public interface IGenericResponse
     {

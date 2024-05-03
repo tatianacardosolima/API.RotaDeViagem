@@ -1,11 +1,5 @@
 ﻿using FluentValidation;
 using RotaDeViagem.Shared.Abstractions.Entities;
-using RotaDeViagem.Shared.Interfaces.IEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RotaDeViagem.Domain.Entities
 {

@@ -4,7 +4,7 @@ using RotaDeViagem.Domain.Commands.Request;
 using RotaDeViagem.Domain.Commands.Response;
 using RotaDeViagem.Domain.Entities;
 using RotaDeViagem.Domain.Interface.IRepositories;
-using RotaDeViagem.Shared.Extensions;
+using RotaDeViagem.Shared.Exceptions;
 using RotaDeViagem.Shared.Interfaces.IResponse;
 
 namespace RotaDeViagem.Domain.Handlers.Corretores
