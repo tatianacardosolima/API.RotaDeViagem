@@ -10,7 +10,7 @@ using RotaDeViagem.Domain.Interface.IRepositories;
 
 namespace RotaDeViagem.DatabaseRepository.Repositories
 {
-    public class RotaRepository : AuditRepository<Rota, long>, IRotaRepository
+    public class RotaRepository : AuditRepository<Rota, int>, IRotaRepository
     {
         public RotaRepository(RotaDeViagemContext context) : base(context)
         {

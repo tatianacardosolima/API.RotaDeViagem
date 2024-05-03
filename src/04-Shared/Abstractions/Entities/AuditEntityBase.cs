@@ -9,7 +9,7 @@ namespace RotaDeViagem.Shared.Abstractions.Entities
 {
     public abstract class AuditEntityBase : IAuditableEntity
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public Guid UniqueId { get; set; }
         public string CreatedBy { get; set; }
         public string? ModifiedBy { get; set; }

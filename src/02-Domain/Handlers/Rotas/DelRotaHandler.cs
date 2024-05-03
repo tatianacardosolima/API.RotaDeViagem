@@ -30,7 +30,7 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
 
             _repository.Delete(entity);
             await _repository.SaveChangesAsync();
-            return new GenericResponse(true, "Rota excluída com sucesso");      
+            return new GenericResponse(true, "Rota excluída com sucesso.");      
         }
 
         
