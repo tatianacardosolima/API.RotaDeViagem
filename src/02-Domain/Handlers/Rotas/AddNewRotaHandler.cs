@@ -30,7 +30,7 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
             
             await _repository.InsertAsync(entity);
             await _repository.SaveChangesAsync();
-            return new GenericResponse(true, "Rota inserida com sucesso");      
+            return new GenericResponse(true, "Rota inserida com sucesso", new { UniqueId = entity.UniqueId}); 
         }
 
         private async Task<bool> ExistRotaAsync(AddNewRotaRequest request)

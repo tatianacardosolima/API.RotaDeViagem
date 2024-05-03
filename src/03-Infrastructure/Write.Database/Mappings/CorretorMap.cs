@@ -19,7 +19,7 @@ namespace RotaDeViagem.DatabaseRepository.Mappings
             builder.Property(x => x.Origem).HasColumnType("varchar(3)").IsRequired();
             builder.Property(x => x.Destino).HasColumnType("varchar(3)").IsRequired();
             builder.Property(x => x.Valor).HasColumnType("decimal(8,2)").IsRequired();
-            PopulateData(builder);
+            //PopulateData(builder);
         }
 
         private static void PopulateData(EntityTypeBuilder<Rota> builder)

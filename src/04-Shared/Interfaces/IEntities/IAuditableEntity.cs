@@ -2,7 +2,7 @@
 {
     public interface IAuditableEntity : IEntity
     {
-        int Id { get; set; }
+        long Id { get; set; }
         Guid UniqueId { get; set; }
         string CreatedBy { get; set; }
         string ModifiedBy { get; set; }

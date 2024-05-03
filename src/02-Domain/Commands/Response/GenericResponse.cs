@@ -4,6 +4,10 @@ namespace RotaDeViagem.Domain.Commands.Response
 {
     public class GenericResponse: IGenericResponse
     {
+        public GenericResponse()
+        {
+            
+        }
         public GenericResponse(bool success, string message, object data)
         {
             Success = success;
