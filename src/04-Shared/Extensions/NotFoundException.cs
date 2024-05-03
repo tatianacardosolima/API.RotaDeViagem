@@ -12,6 +12,11 @@ namespace RotaDeViagem.Shared.Extensions
 
         public NotFoundException(string message) : base(message) { }
 
+        public static void ThrowWhen(bool invalidRule, string message)
+        {
+            if (invalidRule)
+                throw new DomainException(message);
+        }
         public static void ThrowWhenNullEntity(object entity, string erroMessage)
         {
             if (entity != null)

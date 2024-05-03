@@ -26,8 +26,7 @@ namespace RotaDeViagem.Domain.Handlers.Corretores
         {
             DomainException.ThrowWhen(request.Origem == request.Destino, "A rota destino deve ser diferente da rota origem.");
 
-            List<RotaResponse> rotas = (await _provider.GetRotaByOrigemAsync(request.Origem)).ToList();            
-            NotFoundException.ThrowWhenNullOrEmptyList(rotas, "Não há rotas para essa origem");
+            NotFoundException.ThrowWhenNullEntity(!(await _provider.ExistRotaOrigemAsync(request.Origem)), "Não há rotas para essa origem"); ;
             
             List<RotaMaisBarataResponse> rotasMaisBarata = new List<RotaMaisBarataResponse>();
             double valorTotalRota = 0;

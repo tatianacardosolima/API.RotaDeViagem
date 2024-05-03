@@ -20,6 +20,18 @@ namespace RotaDeViagem.Read.Database.Providers
             _connection = connection;
         }
 
+        public async Task<bool> ExistRotaOrigemAsync(string origem)
+        {
+            var commandSql = @"Select count(*) from Rota where origem = @origem";
+
+            var ctd = await _connection.QuerySingleAsync<int>(commandSql, new
+            {
+                origem = origem
+            });
+
+            return ctd > 0;
+        }
+
         public async Task<IEnumerable<RotaResponse>> GetRotaByDestinoAsync(string destino)
         {
             var commandSql = @"Select Origem, Destino, Valor from Rota where destino = @destino";

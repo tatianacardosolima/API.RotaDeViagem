@@ -6,5 +6,7 @@ namespace RotaDeViagem.Domain.Interface.IProviders
     {
         Task<IEnumerable<RotaResponse>> GetRotaByOrigemAsync(string origem);
         Task<IEnumerable<RotaResponse>> GetRotaByDestinoAsync(string destino);
+
+        Task<bool> ExistRotaOrigemAsync(string origem);
     }
 }
